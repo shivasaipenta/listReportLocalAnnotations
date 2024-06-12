@@ -1,0 +1,137 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZEMPLOYEESFE_SRV/$metadata">
+        <edmx:Include Namespace="ZEMPLOYEESFE_SRV" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Empid">
+            <Annotation Term="Common.Label" String="{@i18n>employeeId}">            
+            </Annotation> 
+            <!-- <Annotation Term="Common.ValueListWithFixedValues" Bool="true"/> -->
+            <Annotation Term="Common.ValueList">
+                <Record Type="Common.ValueListType">
+                    <PropertyValue Property="Parameters">
+                        <Collection>
+                            <Record Type="Common.ValueListParameterInOut">
+                                <PropertyValue Property="ValueListProperty" String="Empid"/>
+                                <PropertyValue Property="LocalDataProperty" PropertyPath="Empid"/>
+                            </Record>
+                            <Record Type="Common.ValueListParameterDisplayOnly">
+                                <PropertyValue Property="ValueListProperty" String="Name"/>
+                                
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="CollectionPath" String="EmployeeSet"/>
+                    <PropertyValue Property="SearchSupported" Bool="true"/>
+                </Record>
+            </Annotation>
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Name">
+            <Annotation Term="Common.Label" String="{@i18n>name}">            
+            </Annotation>  
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Desig">
+            <Annotation Term="Common.Label" String="{@i18n>designation}">            
+            </Annotation>  
+        </Annotations>
+        
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Status">
+            <Annotation Term="Common.Label" String="{@i18n>status}">            
+            </Annotation>  
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Email">
+            <Annotation Term="Common.Label" String="{@i18n>email}">            
+            </Annotation>  
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Salary">
+            <Annotation Term="Common.Label" String="{@i18n>salary}">            
+            </Annotation>  
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Rating">
+            <Annotation Term="Common.Label" String="{@i18n>rating}">            
+            </Annotation>  
+        </Annotations>
+         <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Doj">
+            <Annotation Term="Common.Label" String="{@i18n>dateOfJoining}">            
+            </Annotation>  
+        </Annotations>
+            <Annotations Target="ZEMPLOYEESFE_SRV.Employee">
+                <Annotation Term="UI.LineItem">
+                    <Annotation Term="UI.Criticality" Path="Statuscriticality" />
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Empid" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Name" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Email" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Desig" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Skill" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Salary" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Status" />
+                            <PropertyValue Property="Criticality" Path="Statuscriticality" />
+                            <PropertyValue Property="CriticalityRepresentation" EnumMember="UI.CriticalityRepresentationType/WithIcon" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Rating" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/Low" />
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="Rating" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#DPRating" />
+                            <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="DPRating">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Rating" />
+                        <PropertyValue Property="TargetValue" Int="5" />
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="{@i18n>employee}" />
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>employees}" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>Empid</PropertyPath>
+                        <PropertyPath>Name</PropertyPath>
+                        <PropertyPath>Desig</PropertyPath>
+                        <PropertyPath>Skill</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZEMPLOYEESFE_SRV.Employee/Skill">
+                <Annotation Term="Common.FilterDefaultValue" String="SAPUI5"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
