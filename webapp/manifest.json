@@ -170,7 +170,10 @@
                         },
                         "tableSettings": {
                             "type": "ResponsiveTable",
-                            "multiSelect": true
+                            "multiSelect": true,
+                            "multiEdit": {
+                                "enabled": true
+                            }
                         }
                     }
                 },
